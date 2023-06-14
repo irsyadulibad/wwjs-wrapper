@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "dependencies": {
+        "@hapi/hapi": "^21.3.2",
+        "whatsapp-web.js": "^1.21.0"
+    }
+}
