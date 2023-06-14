@@ -19,15 +19,17 @@ module.exports = (server, wwjs) => {
         method: 'GET',
         path: '/qrcode',
         handler: (request, h) => {
-            if(fs.existsSync('./data.qr')) return h.response({
-                success: true,
-                qr: require('./data.qr'),
-            });
-
-            return h.response({
-                success: false,
-                message: 'authenticated',
-            });
+            try {
+                return h.response({
+                    success: true,
+                    qr: fs.readFileSync('./data.qr').toString(),
+                });
+            } catch(e) {
+                return h.response({
+                    success: false,
+                    message: 'authenticated',
+                });
+            }
         }
     })
 }
